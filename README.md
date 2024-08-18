@@ -43,3 +43,10 @@ Stores entities
    Update the product controller
 9. Add seed data
 10. Add Get authors, types; Filter products by author and type; Sort products by price
+11. Create a generic repository
+    Add service to program.cs
+    Implement the generic repository methods
+12. Set up specification classes
+    Update the repository to use the specification
+    Add sorting to the specification
+13. Add projection to the specification
