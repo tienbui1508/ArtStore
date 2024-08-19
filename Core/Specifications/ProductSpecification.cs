@@ -1,25 +1,18 @@
-using System;
 using Core.Entities;
-using Core.Specifications;
 
-namespace Core.Specification;
+namespace Core.Specifications;
 
 public class ProductSpecification : BaseSpecification<Product>
 {
-	private string? author;
-	private string? type;
 
-	public ProductSpecification(string? author, string? type)
+	public ProductSpecification(ProductSpecParams specParams) : base(x =>
+	(string.IsNullOrEmpty(specParams.Search) || x.Name.ToLower().Contains(specParams.Search)) &&
+	(specParams.Authors.Count == 0 || specParams.Authors.Contains(x.Author)) &&
+	(specParams.Types.Count == 0 || specParams.Types.Contains(x.Type)))
 	{
-		this.author = author;
-		this.type = type;
-	}
+		ApplyPaging(specParams.PageSize * (specParams.PageIndex - 1), specParams.PageSize);
 
-	public ProductSpecification(string? author, string? type, string? sort) : base(x =>
-	(string.IsNullOrWhiteSpace(author) || x.Author == author) &&
-	(string.IsNullOrWhiteSpace(type) || x.Type == type))
-	{
-		switch (sort)
+		switch (specParams.Sort)
 		{
 			case "priceAsc":
 				AddOrderBy(x => x.Price);

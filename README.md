@@ -50,3 +50,21 @@ Stores entities
     Update the repository to use the specification
     Add sorting to the specification
 13. Add projection to the specification
+14. Create product spec parameters to improve the old filtering and sorting methods
+15. Add pagination
+    Add Take, Skip, IsPagingEnabled properties to the specification.
+    Add ApplyPaging method.
+    Set MaxPageSize, PageIndex, PageSize in ProductSpecParams.
+    Add ApplyPaging method to ProductSpecification.
+    Create Pagination class in RequestHelpers.
+    Update ProductControllers.
+16. Create Base API controller
+17. Add search functionality
+
+# Concepts learned and practiced
+
+## Repository pattern
+
+## Generic repository
+
+## Deferred execution
