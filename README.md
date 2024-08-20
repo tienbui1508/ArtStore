@@ -15,7 +15,7 @@ Contains DbContext class to maintains connection with the database
 
 Stores entities
 
-# Steps in VS Code
+# Steps in VS Code - C# .Net
 
 1. Create .Net projects: API, Core, Infrastructure.
    Setup dependencies for these projects (dotnet add reference).
@@ -64,7 +64,14 @@ Stores entities
     Add a test controller for error handling.
     Add a middleware to handle errors: return error as a JSON response
     Create a data transfer object CreateProductDto, add validation for Product properties
-19.
+
+# Steps in VS Code - Angular
+
+1. Install Angular CLI
+2. Create Angular project
+3. Set up VS Code for Angular
+4. Set up Angular to use HTTPS
+5. Add Angular Material and Tailwind CSS
 
 # Concepts learned and practiced
 
