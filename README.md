@@ -72,6 +72,15 @@ Stores entities
 3. Set up VS Code for Angular
 4. Set up Angular to use HTTPS
 5. Add Angular Material and Tailwind CSS
+6. Add components
+   Add folders to Angular app: core, shared, features, layout
+   Create components
+7. Add a Header component
+8. Make http requests
+   Add provideHttpClient to app.config.ts
+   Inject HttpClient in app.component.ts
+   Implement OnInit in app.component.ts
+9. Add product and pagination models in app/shared to use typescript types
 
 # Concepts learned and practiced
 
