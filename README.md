@@ -81,6 +81,14 @@ Stores entities
    Inject HttpClient in app.component.ts
    Implement OnInit in app.component.ts
 9. Add product and pagination models in app/shared to use typescript types
+10. Add shop service to get products from API
+    Move codes from the component to the service
+11. Add product item component
+12. Add filtering functionality using Material Dialog
+13. Add sorting functionality
+14. Add shopParams model to supply parameters for the API request
+15. Add pagination to the client using Material
+16. Add search functionality to the client
 
 # Concepts learned and practiced
 
