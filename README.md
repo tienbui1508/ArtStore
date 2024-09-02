@@ -89,6 +89,9 @@ Stores entities
 14. Add shopParams model to supply parameters for the API request
 15. Add pagination to the client using Material
 16. Add search functionality to the client
+17. Create home, product details components and routes
+18. Set up links in the app
+19. Design the product details page
 
 # Concepts learned and practiced
 
