@@ -92,6 +92,16 @@ Stores entities
 17. Create home, product details components and routes
 18. Set up links in the app
 19. Design the product details page
+20. Create a test error component
+21. Create NotFound and Server Error components
+22. Create an HTTP Interceptor for handling API errors
+23. Add toast(snackbar) notifications
+24. Handle validation errors from the API
+25. Configure Server Error, Not Found pages
+26. Handle loading:
+    Add an HTTP Interceptor for loading
+    Add a progress bar to indicate loading
+    Make the header fixed to the top
 
 # Concepts learned and practiced
 
