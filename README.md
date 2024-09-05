@@ -102,6 +102,12 @@ Stores entities
     Add an HTTP Interceptor for loading
     Add a progress bar to indicate loading
     Make the header fixed to the top
+27. Create API for Shopping Cart
+    Create Redis instance to use in the app. Use Redis database because customer shopping cart is still saved in the server but the number of requests to the server is reduced. Redis captures data every minute so customer might loose some items in cart but it's easy for them to add the items back.
+    Add Redis to the project.
+    Create CartItem, ShoppingCart classes
+    Create Cart service, Cart controller
+    Test the Cart in Postman
 
 # Concepts learned and practiced
 
