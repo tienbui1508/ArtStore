@@ -15,7 +15,9 @@ Contains DbContext class to maintains connection with the database
 
 Stores entities
 
-# Steps in VS Code - C# .Net
+# Steps in VS Code
+
+## Create .Net projects
 
 1. Create .Net projects: API, Core, Infrastructure.
    Setup dependencies for these projects (dotnet add reference).
@@ -36,6 +38,9 @@ Stores entities
    Add a new SQL Server connection
 6. Create a products controller
    Create API endpoints for product and test in Postman
+
+## API Architecture
+
 7. Create Interface for ProductRepository in Core and its implementation class in Infrastructure
    Add scoped service to program.cs
 8. Implement the repository methods
@@ -43,6 +48,9 @@ Stores entities
    Update the product controller
 9. Add seed data
 10. Add Get authors, types; Filter products by author and type; Sort products by price
+
+## The specification pattern
+
 11. Create a generic repository
     Add service to program.cs
     Implement the generic repository methods
@@ -50,6 +58,9 @@ Stores entities
     Update the repository to use the specification
     Add sorting to the specification
 13. Add projection to the specification
+
+## Add Sort, Filter, Search, Pagination
+
 14. Create product spec parameters to improve the old filtering and sorting methods
 15. Add pagination
     Add Take, Skip, IsPagingEnabled properties to the specification.
@@ -65,49 +76,79 @@ Stores entities
     Add a middleware to handle errors: return error as a JSON response
     Create a data transfer object CreateProductDto, add validation for Product properties
 
-# Steps in VS Code - Angular
+## Angular Setup
 
-1. Install Angular CLI
-2. Create Angular project
-3. Set up VS Code for Angular
-4. Set up Angular to use HTTPS
-5. Add Angular Material and Tailwind CSS
-6. Add components
-   Add folders to Angular app: core, shared, features, layout
-   Create components
-7. Add a Header component
-8. Make http requests
-   Add provideHttpClient to app.config.ts
-   Inject HttpClient in app.component.ts
-   Implement OnInit in app.component.ts
-9. Add product and pagination models in app/shared to use typescript types
-10. Add shop service to get products from API
+19. Install Angular CLI
+20. Create Angular project
+21. Set up VS Code for Angular
+22. Set up Angular to use HTTPS
+23. Add Angular Material and Tailwind CSS
+24. Add components
+    Add folders to Angular app: core, shared, features, layout
+    Create components
+25. Add a Header component
+26. Make http requests
+    Add provideHttpClient to app.config.ts
+    Inject HttpClient in app.component.ts
+    Implement OnInit in app.component.ts
+27. Add product and pagination models in app/shared to use typescript types
+
+## Build the User Interface for the shop
+
+28. Add shop service to get products from API
     Move codes from the component to the service
-11. Add product item component
-12. Add filtering functionality using Material Dialog
-13. Add sorting functionality
-14. Add shopParams model to supply parameters for the API request
-15. Add pagination to the client using Material
-16. Add search functionality to the client
-17. Create home, product details components and routes
-18. Set up links in the app
-19. Design the product details page
-20. Create a test error component
-21. Create NotFound and Server Error components
-22. Create an HTTP Interceptor for handling API errors
-23. Add toast(snackbar) notifications
-24. Handle validation errors from the API
-25. Configure Server Error, Not Found pages
-26. Handle loading:
+29. Add product item component
+30. Add filtering functionality using Material Dialog
+31. Add sorting functionality
+32. Add shopParams model to supply parameters for the API request
+33. Add pagination to the client using Material
+34. Add search functionality to the client
+
+## Angular routing
+
+35. Create home, product details components and routes
+36. Set up links in the app
+37. Design the product details page
+
+## Client side error handing and loading
+
+38. Create a test error component
+39. Create NotFound and Server Error components
+40. Create an HTTP Interceptor for handling API errors
+41. Add toast(snackbar) notifications
+42. Handle validation errors from the API
+43. Configure Server Error, Not Found pages
+44. Handle loading:
     Add an HTTP Interceptor for loading
     Add a progress bar to indicate loading
     Make the header fixed to the top
-27. Create API for Shopping Cart
+
+## API - Shopping Cart
+
+45. Create API for Shopping Cart
     Create Redis instance to use in the app. Use Redis database because customer shopping cart is still saved in the server but the number of requests to the server is reduced. Redis captures data every minute so customer might loose some items in cart but it's easy for them to add the items back.
     Add Redis to the project.
     Create CartItem, ShoppingCart classes
     Create Cart service, Cart controller
     Test the Cart in Postman
+
+## Client - Shopping Cart
+
+46. Add the cart feature to the angular app.
+    Learn to use signals in Angular
+47. Create cart components
+    Install nanoid
+48. Add the Cart service methods
+49. Add an item to the cart
+50. Use add item functionality in the product item
+51. Persist the cart
+52. Update the nav bar with the cart item count
+53. Create order summary component
+54. Create tje order totals
+55. Add more functions the the service: add, remove, delete items with quantity
+    Add these to the cart
+56. Add the update cart functionality to the product details
+57. Create the checkout components for future
 
 # Concepts learned and practiced
 
@@ -116,3 +157,5 @@ Stores entities
 ## Generic repository
 
 ## Deferred execution
+
+## Angular: Signals
