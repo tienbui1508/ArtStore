@@ -150,6 +150,21 @@ Stores entities
 56. Add the update cart functionality to the product details
 57. Create the checkout components for future
 
+## API - Identity
+
+To implement ASP.NET Identity to allow clients to login and register to the app and receive a Cookie which can be used to authenticate against certain classes/methods in the API
+
+58. Set up Identity
+    Install Identity.Stores extension in nuget to Core project and Identity.EntityFrameworkCore to Infrastructure project
+1.  Update the DB and test the endpoints
+1.  Add a custom register end point. (To add more user info)
+1.  Test the authentication
+1.  Create additional user endpoints
+1.  Create extension methods
+1.  Validation errors
+1.  Add a user address class
+1.  Add an endpoint to update the user address
+
 # Concepts learned and practiced
 
 ## Repository pattern
