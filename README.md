@@ -156,14 +156,32 @@ To implement ASP.NET Identity to allow clients to login and register to the app 
 
 58. Set up Identity
     Install Identity.Stores extension in nuget to Core project and Identity.EntityFrameworkCore to Infrastructure project
-1.  Update the DB and test the endpoints
-1.  Add a custom register end point. (To add more user info)
-1.  Test the authentication
-1.  Create additional user endpoints
-1.  Create extension methods
-1.  Validation errors
-1.  Add a user address class
-1.  Add an endpoint to update the user address
+59. Update the DB and test the endpoints
+60. Add a custom register end point. (To add more user info)
+61. Test the authentication
+62. Create additional user endpoints
+63. Create extension methods
+64. Validation errors
+65. Add a user address class
+66. Add an endpoint to update the user address
+
+## Client - Identity
+
+67. Create the account components
+68. Create the login form
+69. Update the account service to the header component
+70. Persist the login
+    Inject accountService to the init service
+71. Add an auth interceptor
+    To send cookie automatically to the server for any requests that need authentication
+72. Add an Angular Material Menu
+    To have options for the user to navigate the web or logout
+73. Add the register form
+    Add form validation
+    Create a re-usable text input to improve the form
+74. Create an auth guard
+75. Add an empty cart guard
+76. Add an empty state component: for the checkout page when the cart is empty
 
 # Concepts learned and practiced
 
