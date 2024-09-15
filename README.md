@@ -183,6 +183,14 @@ To implement ASP.NET Identity to allow clients to login and register to the app 
 75. Add an empty cart guard
 76. Add an empty state component: for the checkout page when the cart is empty
 
+## API & Client Checkout
+
+77. Create the delivery methods in the API (Core)
+78. Set up Stripe
+79. Implement the payment intent
+80. Create a payment controller
+81.
+
 # Concepts learned and practiced
 
 ## Repository pattern
