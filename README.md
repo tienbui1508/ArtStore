@@ -185,11 +185,26 @@ To implement ASP.NET Identity to allow clients to login and register to the app 
 
 ## API & Client Checkout
 
+To make the app able to accept payments securely using Stripe
+
 77. Create the delivery methods in the API (Core)
 78. Set up Stripe
 79. Implement the payment intent
 80. Create a payment controller
-81.
+81. Add checkout page layout
+82. Add client side Stripe
+83. Create the address element
+84. Populate the address in the address form
+85. Save the address as default address
+86. Create the delivery component
+87. Create the payment element
+88. Create the review component
+89. Validate step completion
+90. Create a Stripe confirmation token
+91. Update the review component with the token information
+92. Confirm the payment
+93. Add Loading and error notifications
+94. Add Checkout success page (temp)
 
 # Concepts learned and practiced
 
