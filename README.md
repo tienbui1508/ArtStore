@@ -217,6 +217,21 @@ To make the app able to accept payments securely using Stripe
 101.  Update the controller to eagerly load in the get methods
 102.  Shape the data to return
 
+## Orders and Payments
+
+103. Create the order components
+104. Submit the order
+105. Design the order component to display orders
+106. Create the order detailed page
+107. Update the address pipe with type guards
+108. Add a webhook to endpoint in the payments controller
+109. Use Stripe CLI to test the webhook
+110. Add SignalR to the API
+111. Add SignalR to the client
+112. Update the checkout success page
+113. Add a guard to the checkout success
+114. Add the home page component style
+
 # Concepts learned and practiced
 
 ## Repository pattern
@@ -232,3 +247,7 @@ To make the app able to accept payments securely using Stripe
 ## Owned entities
 
 ## Unit of work
+
+## Webhooks
+
+## SignalR
