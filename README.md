@@ -15,7 +15,7 @@ Contains DbContext class to maintains connection with the database
 
 Stores entities
 
-# Steps in VS Code
+# 2. Steps in VS Code
 
 ## Create .Net projects
 
@@ -232,22 +232,37 @@ To make the app able to accept payments securely using Stripe
 113. Add a guard to the checkout success
 114. Add the home page component style
 
-# Concepts learned and practiced
+## Publish to Azure
 
-## Repository pattern
+115. Prepare the client app for publishing
+116. Prepare the .Net app for publishing
+117. Set up Redis server on upstash.com
+118. Configure the web app on Azure
+119. Create a Azure DB
+120. Publish the app to Azure
+121. Add Continuos integration using github actions
+122. Troubleshoot Azure issues
+     Problem with the API version of Stripe webhook
+123. Make the empty state component reusable
+124. Update CI to also build the angular app
+     The app will be deployed to Azure automatically when a new commit is pushed to the main branch, without the need of using ng build in the IDE
 
-## Generic repository
+# 3. Things learned and practiced
 
-## Deferred execution
+- Repository pattern
 
-## Angular: Signals
+- Generic repository
 
-## Aggregate entities
+- Deferred execution
 
-## Owned entities
+- Angular: Signals
 
-## Unit of work
+- Aggregate entities
 
-## Webhooks
+- Owned entities
 
-## SignalR
+- Unit of work
+
+- Webhooks
+
+- SignalR
