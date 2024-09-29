@@ -1,9 +1,9 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Cart, CartItem } from '../../shared/models/cart';
+import { Cart, CartItem, Coupon } from '../../shared/models/cart';
 import { Product } from '../../shared/models/product';
-import { firstValueFrom, map, tap } from 'rxjs';
+import { firstValueFrom, map, Observable, tap } from 'rxjs';
 import { DeliveryMethod } from '../../shared/models/deliveryMethod';
 
 @Injectable({
@@ -26,8 +26,12 @@ export class CartService {
       0
     );
     const shipping = delivery ? delivery.price : 0;
-    const discount = 0;
-
+    let discount = 0;
+    if (cart.coupon) {
+      if (cart.coupon.amountOff) discount = cart.coupon.amountOff / 100;
+      else if (cart.coupon.percentOff)
+        discount = (cart.coupon.percentOff / 100) * subtotal;
+    }
     return {
       subtotal,
       shipping,
@@ -125,5 +129,9 @@ export class CartService {
     const cart = new Cart();
     localStorage.setItem('cart_id', cart.id);
     return cart;
+  }
+
+  applyDiscount(code: string) {
+    return this.http.get<Coupon>(this.baseUrl + 'coupons/' + code);
   }
 }

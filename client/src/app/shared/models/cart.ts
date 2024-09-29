@@ -24,4 +24,13 @@ export class Cart implements CartType {
   deliveryMethodId?: number;
   paymentIntentId?: string;
   clientSecret?: string;
+  coupon?: Coupon;
 }
+
+export type Coupon = {
+  couponId: string;
+  name: string;
+  promotionCode: string;
+  amountOff?: number;
+  percentOff?: number;
+};

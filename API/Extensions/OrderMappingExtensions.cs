@@ -20,6 +20,7 @@ public static class OrderMappingExtensions
 
             PaymentSummary = order.PaymentSummary,
             Subtotal = order.Subtotal,
+            Discount = order.Discount,
             Total = order.GetTotal(),
             Status = order.Status.ToString(),
             PaymentIntentId = order.PaymentIntentId,

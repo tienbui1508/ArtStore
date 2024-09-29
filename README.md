@@ -247,6 +247,15 @@ To make the app able to accept payments securely using Stripe
 124. Update CI to also build the angular app
      The app will be deployed to Azure automatically when a new commit is pushed to the main branch, without the need of using ng build in the IDE
 
+## Add the Coupons functionality
+
+125. Create the Coupon entity in Core and update the related entities
+126. Create CouponService in Infrastructure
+127. Refactor and update PaymentIntentService
+128. Update OrderConfiguration and create new EF migrations to update DB schema
+129. Update API Project
+130. Update Client Project
+
 # 3. Things learned and practiced
 
 - Repository pattern
