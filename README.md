@@ -256,6 +256,12 @@ To make the app able to accept payments securely using Stripe
 129. Update API Project
 130. Update Client Project
 
+## Add Roles based authorization
+
+131. Add Roles to the User entity
+132. Implement the role based authorization
+133. Add a refund feature
+
 # 3. Things learned and practiced
 
 - Repository pattern
@@ -275,3 +281,8 @@ To make the app able to accept payments securely using Stripe
 - Webhooks
 
 - SignalR
+
+# Useful commands
+
+dotnet ef database drop -p Infrastructure -s API # Drop the database
+stripe listen --forward-to https://localhost:5001/api/payments/webhook -e payment_intent.succeeded # Listen to Stripe webhook for local development
