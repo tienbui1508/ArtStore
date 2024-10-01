@@ -1,5 +1,9 @@
 # ArtStore E-commerce website
 
+To test all functionalities of the app, login with this admin account:
+Email: admin@test.com
+Password: Password1!
+
 # 1. Project components
 
 ## 1.1. API
@@ -285,4 +289,5 @@ To make the app able to accept payments securely using Stripe
 # Useful commands
 
 dotnet ef database drop -p Infrastructure -s API # Drop the database
+
 stripe listen --forward-to https://localhost:5001/api/payments/webhook -e payment_intent.succeeded # Listen to Stripe webhook for local development

@@ -1,26 +1,26 @@
 [
   {
-    "ShortName": "AusPost Express",
+    "ShortName": "Express",
     "Description": "Fastest delivery time",
-    "DeliveryTime": "1-2 Days",
-    "Price": 10
+    "DeliveryTime": "1-2 Days per Item",
+    "Price": 100
   },
   {
-    "ShortName": "AusPost",
+    "ShortName": "Fast",
     "Description": "Get it within 5 days",
-    "DeliveryTime": "2-5 Days",
-    "Price": 5
+    "DeliveryTime": "2-5 Days per Item",
+    "Price": 50
   },
   {
-    "ShortName": "Sendle",
+    "ShortName": "Standard",
     "Description": "Slower but cheap",
-    "DeliveryTime": "5-10 Days",
-    "Price": 2
+    "DeliveryTime": "5-10 Days per Item",
+    "Price": 20
   },
   {
     "ShortName": "FREE",
     "Description": "Free! You get what you pay for",
-    "DeliveryTime": "1-2 Weeks",
+    "DeliveryTime": "1-2 Weeks per Item",
     "Price": 0
   }
 ]
