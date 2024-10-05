@@ -266,6 +266,15 @@ To make the app able to accept payments securely using Stripe
 132. Implement the role based authorization
 133. Add a refund feature
 
+## Improve performance
+
+134. Add caching to the API
+     Set up caching in the API
+     Create attribute
+     Invalidate the cache
+135. Add lazy loading to angular
+     Move some routes to the components in features folder
+
 # 3. Things learned and practiced
 
 - Repository pattern
