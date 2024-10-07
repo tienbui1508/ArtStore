@@ -275,6 +275,15 @@ To make the app able to accept payments securely using Stripe
 135. Add lazy loading to angular
      Move some routes to the components in features folder
 
+## Add Inventory Management
+
+136. Create re-usable table component
+137. Create the admin catalog content
+138. Adding a product form
+139. Create re-usable select and textarea inputs
+140. Add create, edit and delete functionality
+141. Add Quantity control
+
 # 3. Things learned and practiced
 
 - Repository pattern

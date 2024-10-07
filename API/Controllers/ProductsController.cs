@@ -107,4 +107,28 @@ public class ProductsController(IUnitOfWork unitOfWork) : BaseApiController
 		return unitOfWork.Repository<Product>().Exists(id);
 	}
 
+	[InvalidateCache("api/products|")]
+	[Authorize(Roles = "Admin")]
+	[HttpPut("update-stock/{productId}")]
+	public async Task<ActionResult> UpdateStock(int productId, [FromBody] int newQuantity)
+	{
+		var productItem = await unitOfWork.Repository<Product>().GetByIdAsync(productId);
+
+		if (productItem == null)
+		{
+			return NotFound("Product not found");
+		}
+
+		productItem.QuantityInStock = newQuantity;
+
+		unitOfWork.Repository<Product>().Update(productItem);
+
+		if (await unitOfWork.Complete())
+		{
+			return Ok();
+		}
+
+		return BadRequest("Problem updating stock");
+	}
+
 }
