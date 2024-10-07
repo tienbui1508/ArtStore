@@ -3,13 +3,23 @@ import { ShopService } from '../../../core/services/shop.service';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../../shared/models/product';
 import { CurrencyPipe } from '@angular/common';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatDivider } from '@angular/material/divider';
 import { CartService } from '../../../core/services/cart.service';
 import { FormsModule } from '@angular/forms';
+import { CustomTableComponent } from '../../../shared/components/custom-table/custom-table.component';
+import { AdminCatalogComponent } from '../../admin/admin-catalog/admin-catalog.component';
+import { IsAdminDirective } from '../../../shared/directives/is-admin.directive';
+import { firstValueFrom } from 'rxjs';
+import { ProductFormComponent } from '../../admin/product-form/product-form.component';
+import { DialogService } from '../../../core/services/dialog.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AdminService } from '../../../core/services/admin.service';
+import { ShopParams } from '../../../shared/models/shopParams';
+import { SnackbarService } from '../../../core/services/snackbar.service';
 
 @Component({
   selector: 'app-product-details',
@@ -23,6 +33,9 @@ import { FormsModule } from '@angular/forms';
     MatLabel,
     MatDivider,
     FormsModule,
+    CustomTableComponent,
+    MatButtonModule,
+    IsAdminDirective,
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss',
@@ -34,6 +47,12 @@ export class ProductDetailsComponent implements OnInit {
   product?: Product;
   quantityInCart = 0;
   quantity = 1;
+  private dialogService = inject(DialogService);
+  private dialog = inject(MatDialog);
+  private adminService = inject(AdminService);
+  products: Product[] = [];
+  productParams = new ShopParams();
+  private snackbar = inject(SnackbarService);
 
   ngOnInit(): void {
     this.loadProduct();
@@ -73,5 +92,40 @@ export class ProductDetailsComponent implements OnInit {
 
   getButtonText() {
     return this.quantityInCart > 0 ? 'Update cart' : 'Add to cart';
+  }
+
+  loadProducts() {
+    this.shopService.getProducts(this.productParams).subscribe({
+      next: (response) => {
+        if (response.data) {
+          this.products = response.data;
+        }
+      },
+    });
+  }
+
+  openEditDialog(product: Product) {
+    const dialog = this.dialog.open(ProductFormComponent, {
+      minWidth: '500px',
+      data: {
+        title: 'Edit product',
+        product,
+      },
+    });
+    dialog.afterClosed().subscribe({
+      next: async (result) => {
+        if (result) {
+          await firstValueFrom(this.adminService.updateProduct(result.product));
+          const index = this.products.findIndex(
+            (p) => p.id === result.product.id
+          );
+          if (index !== -1) {
+            this.products[index] = result.product;
+          }
+        }
+        this.loadProduct();
+        this.snackbar.success('Product updated');
+      },
+    });
   }
 }

@@ -43,6 +43,7 @@ export class AdminCatalogComponent {
     {
       label: 'View',
       icon: 'visibility',
+      color: 'accent',
       tooltip: 'View product',
       action: (row: any) => {
         this.router.navigateByUrl(`/shop/${row.id}`);
@@ -51,6 +52,8 @@ export class AdminCatalogComponent {
     {
       label: 'Edit',
       icon: 'edit',
+      color: 'blue',
+
       tooltip: 'Edit product',
       action: (row: any) => {
         this.openEditDialog(row);
@@ -60,6 +63,7 @@ export class AdminCatalogComponent {
       label: 'Delete',
       icon: 'delete',
       tooltip: 'Delete product',
+      color: 'red',
       action: (row: any) => {
         this.openConfirmDialog(row.id);
       },
@@ -67,6 +71,7 @@ export class AdminCatalogComponent {
     {
       label: 'Update quantity',
       icon: 'add_circle',
+      color: 'green',
       tooltip: 'Update quantity in stock',
       action: (row: any) => {
         this.openQuantityDialog(row);

@@ -15,7 +15,8 @@
                             <button mat-icon-button matTooltip="{{ action.tooltip }}"
                                 [disabled]="action.disabled ? action.disabled(row) : false"
                                 (click)="onAction(action.action, row)">
-                                <mat-icon [color]="action.color">{{ action.icon }}</mat-icon>
+                                <mat-icon [ngStyle]="{ color: action.color }" [color]="action.color">{{ action.icon
+                                    }}</mat-icon>
                             </button>
                         </ng-container>
                     </div>

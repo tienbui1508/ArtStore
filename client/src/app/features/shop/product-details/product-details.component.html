@@ -1,5 +1,12 @@
 @if (product) {
 <section class="py-8">
+    <div *appIsAdmin class="flex justify-between items-end mt-2">
+        <div>
+        </div>
+        <button mat-flat-button (click)="openEditDialog(product)">
+            Edit product
+        </button>
+    </div>
     <div class="max-w-screen-2xl px-4 mx-auto">
         <div class="grid grid-cols-2 gap-8">
             <div class="max-w-xl mx-auto">

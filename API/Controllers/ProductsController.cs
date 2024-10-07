@@ -47,6 +47,7 @@ public class ProductsController(IUnitOfWork unitOfWork) : BaseApiController
 		return BadRequest("Problem creating product");
 	}
 
+	[InvalidateCache("api/products|")]
 	[Authorize(Roles = "Admin")]
 	[HttpPut("{id:int}")]
 	public async Task<ActionResult> UpdateProduct(int id, Product product)
