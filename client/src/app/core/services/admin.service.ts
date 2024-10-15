@@ -55,4 +55,17 @@ export class AdminService {
       newQuantity
     );
   }
+
+  uploadProductPhoto(id: number, file: File) {
+    const formData = new FormData();
+    formData.append('file', file); // Append the file to the form data
+
+    // Make the PUT request to upload the photo
+    return this.http.put(`${this.baseUrl}products/add-photo/${id}`, formData, {
+      headers: {
+        // 'Content-Type' is automatically set to 'multipart/form-data' when using FormData
+        // So you don't need to set it explicitly
+      },
+    });
+  }
 }

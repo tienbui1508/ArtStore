@@ -8,11 +8,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductFormComponent } from '../product-form/product-form.component';
 import { AdminService } from '../../../core/services/admin.service';
-import { filter, findIndex, firstValueFrom } from 'rxjs';
+import { findIndex, firstValueFrom } from 'rxjs';
 import { DialogService } from '../../../core/services/dialog.service';
 import { Router } from '@angular/router';
 import { UpdateQuantityComponent } from '../update-quantity/update-quantity.component';
-
+import { UpdatePhotoComponent } from '../update-photo/update-photo.component';
 @Component({
   selector: 'app-admin-catalog',
   standalone: true,
@@ -53,7 +53,6 @@ export class AdminCatalogComponent {
       label: 'Edit',
       icon: 'edit',
       color: 'blue',
-
       tooltip: 'Edit product',
       action: (row: any) => {
         this.openEditDialog(row);
@@ -75,6 +74,15 @@ export class AdminCatalogComponent {
       tooltip: 'Update quantity in stock',
       action: (row: any) => {
         this.openQuantityDialog(row);
+      },
+    },
+    {
+      label: 'Update photo',
+      icon: 'insert_photo',
+      color: 'orange',
+      tooltip: 'Update product photo',
+      action: (row: any) => {
+        this.openAddPhotoDialog(row);
       },
     },
   ];
@@ -178,6 +186,35 @@ export class AdminCatalogComponent {
           const index = this.products.findIndex((p) => p.id === product.id);
           if (index !== -1) {
             this.products[index].quantityInStock = result.updatedQuantity;
+          }
+        }
+      },
+    });
+  }
+
+  openAddPhotoDialog(product: Product) {
+    const dialog = this.dialog.open(UpdatePhotoComponent, {
+      minWidth: '500px',
+      data: {
+        pictureUrl: product.pictureUrl,
+        name: product.name,
+      },
+    });
+    dialog.afterClosed().subscribe({
+      next: async (result) => {
+        if (result) {
+          console.log(result);
+          const updatedPhoto = await firstValueFrom(
+            this.adminService.uploadProductPhoto(
+              product.id,
+              result.selectedFile
+            )
+          );
+          if (updatedPhoto) {
+            const index = this.products.findIndex((p) => p.id === product.id);
+            if (index !== -1) {
+              this.products[index].pictureUrl = result.pictureUrl; // Set the correct URL for the image
+            }
           }
         }
       },

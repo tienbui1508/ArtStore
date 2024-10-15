@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Upload Photo for {{ data.name }}</h2>
+
+<mat-dialog-content>
+    <div class="flex gap-4 mt-6">
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+        <button [disabled]="!selectedFile" (click)="uploadPhoto()" mat-flat-button class="match-input-height">
+            Upload Photo
+        </button>
+    </div>
+
+    <div *ngIf="selectedFile">
+        <p>Selected File: {{ selectedFile.name }}</p>
+
+        <!-- Image Preview -->
+        <div *ngIf="imagePreview" class="image-preview">
+            <img [src]="imagePreview" alt="Image Preview" style="max-width: 100%; max-height: 150px;" />
+        </div>
+    </div>
+</mat-dialog-content>

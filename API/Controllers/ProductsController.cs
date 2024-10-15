@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
-public class ProductsController(IUnitOfWork unitOfWork) : BaseApiController
+public class ProductsController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment) : BaseApiController
 {
 
-	[Cache(600)]
+	// [Cache(600)]
 	[HttpGet]
 	public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts([FromQuery] ProductSpecParams specParams)
 	{
@@ -20,7 +20,7 @@ public class ProductsController(IUnitOfWork unitOfWork) : BaseApiController
 		return await CreatePagedResult(unitOfWork.Repository<Product>(), spec, specParams.PageIndex, specParams.PageSize);
 	}
 
-	[Cache(600)]
+	// [Cache(600)]
 
 	[HttpGet("{id:int}")] // api/products/2
 	public async Task<ActionResult<Product>> GetProduct(int id)
@@ -130,6 +130,64 @@ public class ProductsController(IUnitOfWork unitOfWork) : BaseApiController
 		}
 
 		return BadRequest("Problem updating stock");
+	}
+
+
+
+	[HttpPut("add-photo/{productId}")]
+	public async Task<ActionResult<string>> UploadPhoto(int productId, IFormFile file)
+	{
+		// Validate product existence
+		var productItem = await unitOfWork.Repository<Product>().GetByIdAsync(productId);
+
+		if (productItem == null)
+		{
+			return NotFound("Product not found");
+		}
+
+		// Validate file
+		if (file == null || file.Length == 0)
+		{
+			return BadRequest("Invalid file");
+		}
+
+		// Use IWebHostEnvironment to get the root path
+		var wwwRootPath = webHostEnvironment.WebRootPath; // This will point to the 'wwwroot' folder in production
+		var uploadsFolder = Path.Combine(wwwRootPath, "images", "products");
+
+		// Ensure the folder exists
+		if (!Directory.Exists(uploadsFolder))
+		{
+			Directory.CreateDirectory(uploadsFolder);
+		}
+
+		// Create a unique file name
+
+		var fileExtension = Path.GetExtension(file.FileName);
+		var fileName = $"{productItem.Id}{fileExtension}";
+		var filePath = Path.Combine(uploadsFolder, fileName);
+
+		// Save the file to the folder
+		using (var stream = new FileStream(filePath, FileMode.Create))
+		{
+			await file.CopyToAsync(stream);
+		}
+
+		// Update the product's PictureUrl
+		productItem.PictureUrl = $"images/products/{fileName}"; // URL for accessing the image
+
+
+		// Update the product in the repository
+		unitOfWork.Repository<Product>().Update(productItem);
+
+		// Save changes to the database
+		if (await unitOfWork.Complete())
+		{
+			return Ok(productItem.PictureUrl);  // Return the URL of the uploaded image
+		}
+
+		// If something went wrong, return an error
+		return BadRequest("Problem uploading photo");
 	}
 
 }
